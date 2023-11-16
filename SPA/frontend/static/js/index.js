@@ -1,6 +1,7 @@
 // console.log("JS is loaded");
 import dashboard from "./views/dashboard.js";
-
+import projects from "./views/projects.js";
+import resume from "./views/resume.js";
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
@@ -9,8 +10,8 @@ const navigateTo = url => {
 const router = async () => {
     const routes = [
         {path: "/", view: dashboard },
-        // {path: "/posts", view: () => console.log("Viewing Posts") },
-        // {path: "/settings", view: () => console.log("Viewing Settings") }
+        {path: "/projects", view: projects},
+        {path: "/resume", view: resume}
     ];
 
     //Testing each route for potential match
@@ -35,7 +36,7 @@ const router = async () => {
     
     document.querySelector("#app").innerHTML = await view.getHtml();
 
-    console.log(match.route.view());
+    // console.log(match.route.view());
 
 };
 

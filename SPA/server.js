@@ -12,4 +12,4 @@ app.get("/*", (req, res) => {
 
 });
 
-app.listen(process.env.PORT || 443, () => console.log("Server running..."));
+app.listen(process.env.PORT || 443, () => console.log("The rabbits are en route to Mars (server running...)"));
