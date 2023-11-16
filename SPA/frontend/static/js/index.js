@@ -1,4 +1,6 @@
 // console.log("JS is loaded");
+import dashboard from "./views/dashboard.js";
+
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
@@ -6,9 +8,9 @@ const navigateTo = url => {
 
 const router = async () => {
     const routes = [
-        {path: "/", view: () => console.log("Viewing Dashboard") },
-        {path: "/posts", view: () => console.log("Viewing Posts") },
-        {path: "/settings", view: () => console.log("Viewing Settings") }
+        {path: "/", view: dashboard },
+        // {path: "/posts", view: () => console.log("Viewing Posts") },
+        // {path: "/settings", view: () => console.log("Viewing Settings") }
     ];
 
     //Testing each route for potential match
@@ -29,9 +31,15 @@ const router = async () => {
         };
     }
 
+    const view = new match.route.view();
+    
+    document.querySelector("#app").innerHTML = await view.getHtml();
+
     console.log(match.route.view());
 
 };
+
+window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", e => {
@@ -40,6 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
             navigateTo(e.target.href);
         }
     });
-    
+
     router();
 });
