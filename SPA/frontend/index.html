@@ -3,20 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Page App</title>
+    <title>Shahabul Khan</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="/static/css/index.css">
 </head>
+
 <body>
     <div class="page-container">
         <nav class="nav">
-            <a href="/" class="nav__link" data-link>Dashboard</a>
-            <a href="/projects" class="nav__link" data-link>Projects</a>
+            <div class="nav__border"></div>
+            <!-- <a href="/" class="nav__link"> -->
+                <div>
+                    <i class = "material-icons icon">emoji_person</i>
+                </div>
+                <span class="nav__label" data-link>Dashboard</span>
+            <!-- </a> -->
+                <!-- <a href="#" class="nav__link" data-link>Dashboard</a> -->
+            <a href="/projects" class="nav__link">
+                <div class ="nav__icon-container">
+                    <i class = "material-icons">manufacturing</i>
+                </div>
+                <span class="nav__label" data-link>Projects</span>
+            </a>
+            <!-- <a href="/projects" class="nav__link" data-link>Projects</a> -->
             <a href="/resume" class="nav__link" data-link>Resume</a>
         </nav>
+        <main class="main">
+
+        </main>
     <div id="app"></div>
     <script type="module" src="/static/js/index.js"></script>
     </div>
+    <script>
+        // Navigation
+        {
+          const collapsedClass = "nav--collapsed";
+          const lsKey = "navCollapsed";
+          const nav = document.querySelector(".nav");
+          const navBorder = nav.querySelector(".nav__border");
+          if (localStorage.getItem(lsKey) === "true") {
+            nav.classList.add(collapsedClass);
+          }
+          navBorder.addEventListener("click", () => {
+            nav.classList.toggle(collapsedClass);
+            localStorage.setItem(lsKey, nav.classList.contains(collapsedClass));
+          });
+        }
+    </script>
 </body>
 </html>
